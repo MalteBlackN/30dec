@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package auction;
+
+option go_package = "https://github.com/MalteBlackN/30dec;auction";
+
+service AuctionService {
+    rpc Bid (BidRequest) returns (BidResponse) {}
+    rpc Result (ResultRequest) returns (ResultResponse) {}    
+}
+
+message BidRequest {
+    string name = 1;
+    int32 bid = 2;
+}
+
+message BidResponse {
+    bool success = 1;
+    int32 HighestBid = 2;
+    string HighestBidder = 3;
+}
+
+message ResultRequest {
+}
+
+message ResultResponse {
+    int32 HighestBid = 1;
+    bool success = 2;
+    string HighestBidder = 3;
+}
+
